@@ -1,0 +1,19 @@
+{
+  "name": "react-omni-counter",
+  "version": "1.0.0",
+  "description": "An elegant and fully customizable React counter.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "counter",
+    "countdown",
+    "react",
+    "counter",
+    "react",
+    "countdown"
+  ],
+  "author": "Harry Le",
+  "license": "ISC"
+}
