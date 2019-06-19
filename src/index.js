@@ -13,7 +13,7 @@ const initialState = {
   asSeconds: formatTime(0),
 }
 
-const Counter = ({
+export const Counter = ({
   from,
   to,
   mode,
@@ -100,6 +100,8 @@ const generateView = ({
   } else if (mode === 'day') {
     const View = Component || AsView
     return <View time={days} className={className} />
+  } else if (mode === 'concise') {
+    return <ConciseView s={asSeconds} m={asMinutes} h={asHours} d={days} className={className} />
   } else {
     const View = Component || DefaultView
     return (
@@ -108,11 +110,29 @@ const generateView = ({
   }
 }
 
-export default Counter
-
 const DefaultView = ({ days, hours, minutes, seconds, className }) => (
   <span className={className}>
     {days} days {hours}:{minutes}:{seconds}
+  </span>
+)
+
+const ConciseView = ({ s, m, h, d, className }) => (
+  <span className={className}>
+    {d > 1
+      ? `${d} days`
+      : d > 0
+      ? `${d} day`
+      : h > 1
+      ? `${h} hours`
+      : h > 0
+      ? `${h} hour`
+      : m > 1
+      ? `${m} minutes`
+      : m > 0
+      ? `${m} minute`
+      : h > 1
+      ? `${h} seconds`
+      : `${h} second`}
   </span>
 )
 
