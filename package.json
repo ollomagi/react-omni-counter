@@ -1,6 +1,6 @@
 {
   "name": "react-omni-counter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An elegant and fully customizable React counter.",
   "main": "index.js",
   "scripts": {
