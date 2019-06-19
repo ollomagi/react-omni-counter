@@ -13,7 +13,7 @@ const initialState = {
   asSeconds: formatTime(0),
 }
 
-export const Counter = ({
+const Counter = ({
   from,
   to,
   mode,
@@ -137,3 +137,5 @@ const ConciseView = ({ s, m, h, d, className }) => (
 )
 
 const AsView = ({ time, className }) => <span className={className}>{time}</span>
+
+export default Counter
