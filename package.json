@@ -15,5 +15,8 @@
     "countdown"
   ],
   "author": "Harry Le",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.24.0"
+  }
 }
