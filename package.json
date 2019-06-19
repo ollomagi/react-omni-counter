@@ -2,7 +2,7 @@
   "name": "react-omni-counter",
   "version": "1.0.4",
   "description": "An elegant and fully customizable React counter.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "build": "webpack"
