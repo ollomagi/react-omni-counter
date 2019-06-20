@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
-
-const formatTime = time => (parseInt(time, 10) < 10 ? `0${parseInt(time, 10)}` : time)
+import { DefaultView, SmartView, AsView } from './Views'
+import { formatTime } from './utils'
 
 const initialState = {
   days: 0,
@@ -20,6 +20,7 @@ const Counter = ({
   onComplete,
   onExpiry,
   className = 'counter-view',
+  unitMode = 'short',
   Component,
 }) => {
   if (from === undefined && to === undefined) {
@@ -79,63 +80,64 @@ const Counter = ({
     }
   }, [])
 
-  return generateView({ state, mode, className, Component })
+  return generateView({ state, mode, unitMode, className, Component })
 }
 
 const generateView = ({
   state: { days, hours, minutes, seconds, asHours, asMinutes, asSeconds },
   mode,
+  unitMode,
   className,
   Component,
 }) => {
-  if (mode === 'second') {
-    const View = Component || AsView
-    return <View time={asSeconds} className={className} />
-  } else if (mode === 'minute') {
-    const View = Component || AsView
-    return <View time={asMinutes} className={className} />
-  } else if (mode === 'hour') {
-    const View = Component || AsView
-    return <View time={asHours} className={className} />
-  } else if (mode === 'day') {
-    const View = Component || AsView
-    return <View time={days} className={className} />
-  } else if (mode === 'concise') {
-    return <ConciseView s={asSeconds} m={asMinutes} h={asHours} d={days} className={className} />
-  } else {
-    const View = Component || DefaultView
+  if (!Component) {
+    if (['s', 'm', 'h', 'd'].includes(mode)) {
+      const times = {
+        s: asSeconds,
+        m: asMinutes,
+        h: asHours,
+        d: days,
+      }
+      return <AsView time={times[mode]} unit={mode} className={className} unitMode={unitMode} />
+    }
+
+    if (mode === 'smart') {
+      return (
+        <SmartView
+          s={asSeconds}
+          m={asMinutes}
+          h={asHours}
+          d={days}
+          unitMode={unitMode}
+          className={className}
+        />
+      )
+    }
+
     return (
-      <View days={days} hours={hours} minutes={minutes} seconds={seconds} className={className} />
+      <DefaultView
+        days={days}
+        hours={hours}
+        minutes={minutes}
+        seconds={seconds}
+        unitMode={unitMode}
+        className={className}
+      />
     )
   }
+
+  return (
+    <Component
+      days={days}
+      hours={hours}
+      minutes={minutes}
+      seconds={seconds}
+      asDays={days}
+      asHours={asHours}
+      asMinutes={asMinutes}
+      asSeconds={asSeconds}
+    />
+  )
 }
-
-const DefaultView = ({ days, hours, minutes, seconds, className }) => (
-  <span className={className}>
-    {days} days {hours}:{minutes}:{seconds}
-  </span>
-)
-
-const ConciseView = ({ s, m, h, d, className }) => (
-  <span className={className}>
-    {d > 1
-      ? `${d} days`
-      : d > 0
-      ? `${d} day`
-      : h > 1
-      ? `${h} hours`
-      : h > 0
-      ? `${h} hour`
-      : m > 1
-      ? `${m} minutes`
-      : m > 0
-      ? `${m} minute`
-      : h > 1
-      ? `${h} seconds`
-      : `${h} second`}
-  </span>
-)
-
-const AsView = ({ time, className }) => <span className={className}>{time}</span>
 
 export default Counter
