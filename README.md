@@ -5,20 +5,34 @@ import Counter from 'react-omni-counter'
 
 <Counter to={tomorrow} onComplete={handleComplete} />
 ```
+
+# Install
+- `npm install react-omni-counter`
+- `yarn add react-omni-counter`
+
 # Features
 - Include both countdown and countup
 - Provide onComplete and onExpired functions
-- Has 3 diffrent counting modes (explained below)
+- Has three diffrent counting & displaying modes
 - Support various display preferences with an option to make your own custom view component.
 
+# Props
+- `to`: A valid datetime string in the future. Apply to countdown only. E.g.: `Jun 20 2029 15:28:14`.
+- `from`: A valid datetime string in the past. Apply to countup only. E.g.: `Jun 20 2019 15:28:14`.
+- `mode`: Options for counting mode. See below for details.
+- `unitMode`: Options for displaying time unit. E.g. `2 minutes` vs `2m`.
+- `onComplete`: A function to fire when the counter reach 0. Apply to countdown only.
+- `onExpiry`: A function to fire when end time is past. Apply to countdown only.
+- `Component`: Your custom view for displaying the counter. Provided with all time units.
+
 # Usage
-#### Countdown
+### Countdown
 ```javascript
 const tomorrow = new Date(Date.now() + 86400000) 
 
 <Counter to={tomorrow} /> // 0d 23h 59m 59s
 ```
-#### Countup
+### Countup
 ```javascript
 const now = new Date(Date.now())
 
@@ -34,7 +48,7 @@ const handleExpiry = _ => console.log('EXPIRIED')
 <Counter to={nextThreeSecs} onComplete={handleComplete} onExpiry={handleExpiry} />
 ```
 
-#### Modes
+### Modes
 - Default: Display all time units: day, hour, minute and second
 ```javascript
 <Counter to={tomorrow} />
@@ -52,7 +66,7 @@ const handleExpiry = _ => console.log('EXPIRIED')
 <Counter to={tomorrow} mode="s" /> // 86399s
 ```
 
-#### Unit Modes
+### Unit Modes
 - Short (default): d, h, m, s
 ```javascript
 <Counter to={tomorrow} /> // 0d 23h 59m 59s
@@ -70,8 +84,8 @@ const handleExpiry = _ => console.log('EXPIRIED')
 <Counter to={tomorrow} mode="s" unitMode={null} /> // 86399
 ```
 
-#### Custom View Component
-You can create your own view component with a wide range of time options as props: `days`, `hours`, `minutes`, `seconds`, `asDays`, `asHours`, `asMinutes`, `asSeconds`. 
+### Custom View Component
+You can create your own view component with a wide range of time options as props: `days`, `hours`, `minutes`, `seconds`, `asDays`, `asHours`, `asMinutes`, `asSeconds`. You don't have to use all of them.
 
 ```javascript
 const MyCounter = ({  hours, minutes, seconds }) => (
@@ -88,5 +102,3 @@ const MyCounter = ({  hours, minutes, seconds }) => (
 
 <Counter to={tomorrow} Component={MyCounter} /> // 0 DAYS 23:59:59
 ```
-
-Happy coding!
