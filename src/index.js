@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
 import { DefaultView, SmartView, AsView } from './Views'
-import { formatTime } from './utils'
 
 const initialState = {
   days: 0,
-  hours: formatTime(0),
-  minutes: formatTime(0),
-  seconds: formatTime(0),
-  asHours: formatTime(0),
-  asMinutes: formatTime(0),
-  asSeconds: formatTime(0),
+  hours: 0,
+  minutes: 0,
+  seconds: 0,
+  asHours: 0,
+  asMinutes: 0,
+  asSeconds: 0,
 }
 
 const Counter = ({
@@ -50,19 +49,22 @@ const Counter = ({
       !unmount &&
         setState({
           days: d,
-          hours: formatTime(h),
-          minutes: formatTime(m),
-          seconds: formatTime(s),
-          asHours: formatTime(asHr),
-          asMinutes: formatTime(asMin),
-          asSeconds: formatTime(asSec),
+          hours: h,
+          minutes: m,
+          seconds: s,
+          asDays: d,
+          asHours: asHr,
+          asMinutes: asMin,
+          asSeconds: asSec,
         })
 
       if (diff < 1000) {
         onComplete instanceof Function && onComplete()
+        setState(initialState)
       }
     } else {
       onExpiry instanceof Function && onExpiry()
+      setState(initialState)
       stop()
     }
   }
@@ -84,7 +86,7 @@ const Counter = ({
 }
 
 const generateView = ({
-  state: { days, hours, minutes, seconds, asHours, asMinutes, asSeconds },
+  state: { days, hours, minutes, seconds, asDays, asHours, asMinutes, asSeconds },
   mode,
   unitMode,
   className,
@@ -94,9 +96,9 @@ const generateView = ({
     if (['s', 'm', 'h', 'd'].includes(mode)) {
       const times = {
         s: asSeconds,
-        m: asMinutes,
-        h: asHours,
-        d: days,
+        m: asMinutes + 1,
+        h: asHours + 1,
+        d: asDays + 1,
       }
       return <AsView time={times[mode]} unit={mode} className={className} unitMode={unitMode} />
     }
@@ -107,7 +109,7 @@ const generateView = ({
           s={asSeconds}
           m={asMinutes}
           h={asHours}
-          d={days}
+          d={asDays}
           unitMode={unitMode}
           className={className}
         />
@@ -132,7 +134,7 @@ const generateView = ({
       hours={hours}
       minutes={minutes}
       seconds={seconds}
-      asDays={days}
+      asDays={asDays}
       asHours={asHours}
       asMinutes={asMinutes}
       asSeconds={asSeconds}

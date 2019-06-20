@@ -17,9 +17,11 @@ export const formatUnit = (time, unit, unitMode) => {
   const uMode = umd[unitMode]
   return !uMode
     ? time
-    : unitMode === 'full' && parseInt(time, 10) > 1
-    ? `${time} ${uMode[unit]}s`
-    : `${time} ${uMode[unit]}`
+    : unitMode === 'short'
+    ? `${formatTime(time)}${uMode[unit]}`
+    : parseInt(time, 10) > 1
+    ? `${formatTime(time)} ${uMode[unit]}s`
+    : `${formatTime(time)} ${uMode[unit]}`
 }
 
 export const formatTime = time => (parseInt(time, 10) < 10 ? `0${parseInt(time, 10)}` : time)
