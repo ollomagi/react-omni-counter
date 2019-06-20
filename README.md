@@ -4,15 +4,13 @@ An elegant and fully customizable React counter.
 # Example
 ```javascript
 import Counter from 'react-omni-counter'
-const nextNinetyMinutes = 
-<Counter to={tomorrow} onComplete={handleComplete} />
-```
 
-```javascript
-<Counter to={nextNinetyMinutes} />                               // 00d 01h 29m 59s
-<Counter to={nextNinetyMinutes} mode="smart" unitMode="full" />  // 01 hour
-<Counter to={nextNinetyMinutes} mode="m" />                      // 90m
-<Counter to={nextNinetyMinutes} Component={MyCounter} />         // 1:29:59
+const nextNinetyMinutes = new Date(Date.now() + 5400000)
+
+<Counter to={nextNinetyMinutes} />                           // 00d 01h 29m 59s
+<Counter to={nextNinetyMinutes} mode="smart"/>               // 01h
+<Counter to={nextNinetyMinutes} mode="m" unitMode="full" />  // 90m
+<Counter to={nextNinetyMinutes} Component={MyCounter} />     // 1:29:59
 ```
 
 # Install
