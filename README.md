@@ -9,7 +9,7 @@ const nextNinetyMinutes = new Date(Date.now() + 5400000)
 
 <Counter to={nextNinetyMinutes} />                           // 00d 01h 29m 59s
 <Counter to={nextNinetyMinutes} mode="smart"/>               // 01h
-<Counter to={nextNinetyMinutes} mode="m" unitMode="full" />  // 90m
+<Counter to={nextNinetyMinutes} mode="m" unitMode="full" />  // 90 minutes
 <Counter to={nextNinetyMinutes} Component={MyCounter} />     // 1:29:59
 ```
 
