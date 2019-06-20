@@ -49,16 +49,16 @@ const handleExpiry = _ => console.log('EXPIRIED')
 ```
 
 ### Modes
-- Default: Display all time units: day, hour, minute and second
+- *Default*: Display all time units: day, hour, minute and second
 ```javascript
 <Counter to={tomorrow} />
 ```
-- Smart: Display the most approximate time unit. For example, `0d 23h 59m 2s` will be `23h`
+- *Smart*: Display the most approximate time unit. For example, `0d 23h 59m 2s` will be `23h`
 ```javascript
 <Counter to={tomorrow} mode="smart" />
 ```
 
-- Time Unit: Represent the duration by one time unit
+- *Time Unit*: Represent the duration by one time unit
 ```javascript
 <Counter to={tomorrow} mode="d" /> // 1d
 <Counter to={tomorrow} mode="h" /> // 24h
@@ -67,16 +67,16 @@ const handleExpiry = _ => console.log('EXPIRIED')
 ```
 
 ### Unit Modes
-- Short (default): d, h, m, s
+- *Short* (default): d, h, m, s
 ```javascript
 <Counter to={tomorrow} /> // 0d 23h 59m 59s
 <Counter to={tomorrow} unitMode="short" /> // 0d 23h 59m 59s
 ```
-- Full: days, hours, minutes and seconds
+- *Full*: days, hours, minutes and seconds
 ```javascript
 <Counter to={tomorrow} unitMode="full" /> // 0 days 23 hours 59 minutes 59 seconds
 ```
-- Null: no unit get displayed (more suitable with Time Unit mode):
+- *Null*: no unit get displayed (more suitable with Time Unit mode):
 ```javascript
 <Counter to={tomorrow} mode="d" unitMode={null} /> // 1
 <Counter to={tomorrow} mode="h" unitMode={null} /> // 24
