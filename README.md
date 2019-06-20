@@ -9,10 +9,10 @@ const nextNinetyMinutes =
 ```
 
 ```javascript
-<Counter to={nextNinetyMinutes} />                                // 00d 01h 29m 59s
-<Counter to={nextNinetyMinutes} mode="smart" unitMode="full" />   // 01 hour
-<Counter to={nextNinetyMinutes} mode="m" />                       // 90m
-<Counter to={nextNinetyMinutes} Component={MyCounter} />          // 1 HOUR 30 MINUTES
+<Counter to={nextNinetyMinutes} />                               // 00d 01h 29m 59s
+<Counter to={nextNinetyMinutes} mode="smart" unitMode="full" />  // 01 hour
+<Counter to={nextNinetyMinutes} mode="m" />                      // 90m
+<Counter to={nextNinetyMinutes} Component={MyCounter} />         // 1 HOUR 30 MINUTES
 ```
 
 # Install
@@ -39,13 +39,13 @@ const nextNinetyMinutes =
 ```javascript
 const tomorrow = new Date(Date.now() + 86400000) 
 
-<Counter to={tomorrow} />         // 00d 23h 59m 59s
+<Counter to={tomorrow} />  // 00d 23h 59m 59s
 ```
 ### Countup
 ```javascript
 const now = new Date(Date.now())
 
-<Counter from={now} />            // 00d 00h 00m 01s
+<Counter from={now} />     // 00d 00h 00m 01s
 ```
 
 #### On Complete & On Expiry
@@ -69,28 +69,28 @@ const handleExpiry = _ => console.log('EXPIRIED')
 
 - *Time Unit*: Represent the duration by one time unit
 ```javascript
-<Counter to={tomorrow} mode="d" />        // 1d
-<Counter to={tomorrow} mode="h" />        // 24h
-<Counter to={tomorrow} mode="m" />        // 1440m
-<Counter to={tomorrow} mode="s" />        // 86399s
+<Counter to={tomorrow} mode="d" />  // 1d
+<Counter to={tomorrow} mode="h" />  // 24h
+<Counter to={tomorrow} mode="m" />  // 1440m
+<Counter to={tomorrow} mode="s" />  // 86399s
 ```
 
 ### Unit Modes
 - *Short* (default): d, h, m, s
 ```javascript
-<Counter to={tomorrow} />                           // 00d 23h 59m 59s
-<Counter to={tomorrow} unitMode="short" />          // 00d 23h 59m 59s
+<Counter to={tomorrow} />                   // 00d 23h 59m 59s
+<Counter to={tomorrow} unitMode="short" />  // 00d 23h 59m 59s
 ```
 - *Full*: days, hours, minutes and seconds
 ```javascript
-<Counter to={tomorrow} unitMode="full" />           // 00 days 23 hours 59 minutes 59 seconds
+<Counter to={tomorrow} unitMode="full" />   // 00 days 23 hours 59 minutes 59 seconds
 ```
 - *Null*: no unit get displayed (more suitable with Time Unit mode):
 ```javascript
-<Counter to={tomorrow} mode="d" unitMode={null} />    // 1
-<Counter to={tomorrow} mode="h" unitMode={null} />    // 24
-<Counter to={tomorrow} mode="m" unitMode={null} />    // 1440
-<Counter to={tomorrow} mode="s" unitMode={null} />    // 86399
+<Counter to={tomorrow} mode="d" unitMode={null} />  // 1
+<Counter to={tomorrow} mode="h" unitMode={null} />  // 24
+<Counter to={tomorrow} mode="m" unitMode={null} />  // 1440
+<Counter to={tomorrow} mode="s" unitMode={null} />  // 86399
 ```
 
 ### Custom View Component
@@ -109,5 +109,5 @@ const MyCounter = ({ hours, minutes, seconds }) => (
   </div>
 )
 
-<Counter to={tomorrow} Component={MyCounter} />         // 23:59:59
+<Counter to={tomorrow} Component={MyCounter} />  // 23:59:59
 ```
