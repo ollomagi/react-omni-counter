@@ -1,6 +1,8 @@
 # react-omni-counter
 An elegant and fully customizable React counter.
-
+```javascript
+<Counter to={tomorrow} onComplete={handleComplete} />
+```
 # Features
 - Include both countdown and countup
 - Provide onComplete and onExpired functions
@@ -10,9 +12,9 @@ An elegant and fully customizable React counter.
 # Usage
 #### Countdown
 ```javascript
-const nextDay = new Date(Date.now() + 86400000)
+const tomorrow = new Date(Date.now() + 86400000)
 
-<Counter to={nextDay} />
+<Counter to={tomorrow} />
 ```
 #### Countup
 ```javascript
