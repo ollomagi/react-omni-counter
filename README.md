@@ -11,11 +11,13 @@ An elegant and fully customizable React counter.
 #### Countdown
 ```javascript
 const nextDay = new Date(Date.now() + 86400000)
+
 <Counter to={nextDay} />
 ```
 #### Countup
 ```javascript
 const now = new Date(Date.now())
+
 <Counter from={now} />
 ```
 
@@ -23,5 +25,6 @@ const now = new Date(Date.now())
 ```javascript
 const next3Secs = new Date(Date.now() + 3000)
 const handleComplete = _ => console.log('DONE')
+
 <Counter to={next3Secs} onComplete={handleComplete} />
 ```
