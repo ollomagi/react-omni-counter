@@ -12,7 +12,7 @@ const nextNinetyMinutes =
 <Counter to={nextNinetyMinutes} />                               // 00d 01h 29m 59s
 <Counter to={nextNinetyMinutes} mode="smart" unitMode="full" />  // 01 hour
 <Counter to={nextNinetyMinutes} mode="m" />                      // 90m
-<Counter to={nextNinetyMinutes} Component={MyCounter} />         // 1 HOUR 30 MINUTES
+<Counter to={nextNinetyMinutes} Component={MyCounter} />         // 1:29:59
 ```
 
 # Install
