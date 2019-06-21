@@ -5,12 +5,12 @@ An elegant and fully customizable React counter.
 ```javascript
 import Counter from 'react-omni-counter'
 
-const nextNinetyMinutes = new Date(Date.now() + 5400000)
+const next90Mins = new Date(Date.now() + 5400000)
 
-<Counter to={nextNinetyMinutes} />                           // 00d 01h 29m 59s
-<Counter to={nextNinetyMinutes} mode="smart"/>               // 01h
-<Counter to={nextNinetyMinutes} mode="m" unitMode="full" />  // 90 minutes
-<Counter to={nextNinetyMinutes} Component={MyCounter} />     // 1:29:59
+<Counter to={next90Mins} />                           // 00d 01h 29m 59s
+<Counter to={next90Mins} mode="smart"/>               // 01h
+<Counter to={next90Mins} mode="m" unitMode="full" />  // 90 minutes
+<Counter to={next90Mins} Component={MyCounter} />     // 1:29:59
 ```
 
 # Install
@@ -48,21 +48,27 @@ const now = new Date(Date.now())
 
 #### On Complete & On Expiry
 ```javascript
-const nextThreeSecs = new Date(Date.now() + 3000)
+const next3Secs = new Date(Date.now() + 3000)
 const handleComplete = _ => console.log('DONE')
 const handleExpiry = _ => console.log('EXPIRIED')
 
-<Counter to={nextThreeSecs} onComplete={handleComplete} onExpiry={handleExpiry} />
+<Counter to={next3Secs} onComplete={handleComplete} onExpiry={handleExpiry} />
 ```
 
 ### Modes
 - *Default*: Display all time units: day, hour, minute and second
 ```javascript
-<Counter to={tomorrow} />
+<Counter to={tomorrow} />  // 00d 23h 59m 59s
 ```
-- *Smart*: Display the most approximate time unit. For example, `00d 23h 59m 2s` will be `23h`
+- *Smart*: Display the most approximate time unit. For example, `00d 23h 59m 2s` will be `23h`. As it's going down, it will use the next smaller time unit.
 ```javascript
-<Counter to={tomorrow} mode="smart" />
+<Counter to={tomorrow} mode="smart" />     // 23h
+
+<Counter to={next100Mins} mode="smart" />  // 1h
+<Counter to={next50Mins} mode="smart" />   // 50m
+
+<Counter to={next100Secs} mode="smart" />  // 1m
+<Counter to={next50Secs} mode="smart" />   // 50s
 ```
 
 - *Time Unit*: Represent the duration by one time unit
