@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\"",
     "build": "webpack --mode production"
   },
+  "repository": "ollomagi/react-omni-counter",
+  "bugs": {
+    "url": "https://github.com/ollomagi/react-omni-counter/issues"
+  },
   "keywords": [
     "counter",
     "countdown",
