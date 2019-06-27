@@ -35,7 +35,8 @@ const next90Mins = new Date(Date.now() + 5400000)
 # Usage
 ### Countdown
 ```javascript
-const tomorrow = new Date(Date.now() + 86400000) 
+let tomorrow = new Date()
+tomorrow.setDate(tomorrow.getDate() + 1)
 
 <Counter to={tomorrow} />  // 00d 23h 59m 59s
 ```
