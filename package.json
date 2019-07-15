@@ -28,12 +28,11 @@
     "@babel/runtime": "^7.4.5",
     "babel-loader": "^8.0.6",
     "jest": "^24.8.0",
-    "webpack": "^4.34.0",
+    "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "webpack": "^4.35.3",
     "webpack-cli": "^3.3.4"
   },
-  "dependencies": {
-    "moment": "^2.24.0"
-  }
+  "dependencies": {}
 }
