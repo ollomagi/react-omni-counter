@@ -13,15 +13,16 @@ const umd = {
   },
 }
 
-export const formatUnit = (time, unit, unitMode) => {
+export const formatUnit = (time, formatTime, unit, unitMode) => {
   const uMode = umd[unitMode]
+  const format = time => (formatTime ? formatTime(time) : time)
   return !uMode
     ? time
     : unitMode === 'short'
-    ? `${formatTime(time)}${uMode[unit]}`
+    ? `${format(time)}${uMode[unit]}`
     : parseInt(time, 10) > 1
-    ? `${formatTime(time)} ${uMode[unit]}s`
-    : `${formatTime(time)} ${uMode[unit]}`
+    ? `${format(time)} ${uMode[unit]}s`
+    : `${format(time)} ${uMode[unit]}`
 }
 
 export const formatTime = time => (parseInt(time, 10) < 10 ? `0${parseInt(time, 10)}` : time)
