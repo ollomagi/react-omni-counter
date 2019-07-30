@@ -34,17 +34,19 @@ const next90Mins = new Date(Date.now() + 5400000)
 - `Component`: Your custom view for displaying the counter. Provided with all time units.
 
 # Usage
-### Countdown
 ```javascript
+const now = new Date(Date.now())
+
 let tomorrow = new Date()
 tomorrow.setDate(tomorrow.getDate() + 1)
+```
 
+### Countdown
+```javascript
 <Counter to={tomorrow} />  // -> 00d 23h 59m 59s
 ```
 ### Countup
 ```javascript
-const now = new Date(Date.now())
-
 <Counter from={now} />     // -> 00d 00h 00m 01s
 ```
 ### Count From/To
@@ -56,21 +58,18 @@ const now = new Date(Date.now())
 - *Default*: Display all time units: day, hour, minute and second
 ```javascript
 <Counter to={tomorrow} />  // -> 00d 23h 59m 59s
-
+```
 
 - *hh:mm:ss*: Display three time units hour, minute and second in standard countdown form
 ```javascript
 <Counter to={tomorrow} mode="hh:mm:ss"/>  // -> 23:59:59
-
-
 ```
+
 - *Smart*: Display the most approximate time unit. For example, `00d 23h 59m 2s` will be `23h`. As it's going down, it will use the next smaller time unit.
 ```javascript
 <Counter to={tomorrow} mode="smart" />     // -> 23h
-
 <Counter to={next100Mins} mode="smart" />  // -> 1h
 <Counter to={next50Mins} mode="smart" />   // -> 50m
-
 <Counter to={next100Secs} mode="smart" />  // -> 1m
 <Counter to={next50Secs} mode="smart" />   // -> 50s
 ```
