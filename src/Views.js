@@ -1,5 +1,5 @@
 import React from 'react'
-import { formatUnit } from './utils'
+import { formatTime, formatUnit } from './utils'
 
 export const AsView = ({ time, unit, unitMode, className }) => (
   <span className={className}>{formatUnit(time, true, unit, unitMode)}</span>
@@ -14,6 +14,12 @@ export const SmartView = ({ s, m, h, d, unitMode, className }) => (
       : m > 0
       ? formatUnit(m, false, 'm', unitMode)
       : formatUnit(s, false, 's', unitMode)}
+  </span>
+)
+
+export const HourClockView = ({ hours, minutes, seconds, className }) => (
+  <span className={className}>
+    {formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}
   </span>
 )
 

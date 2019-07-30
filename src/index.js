@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
-import { DefaultView, SmartView, AsView } from './Views'
+import { DefaultView, SmartView, AsView, HourClockView } from './Views'
 
 const initialState = {
   days: 0,
@@ -116,6 +116,10 @@ const generateView = ({
           className={className}
         />
       )
+    }
+
+    if (mode === 'hh:mm:ss') {
+      return <HourClockView hours={asHours} minutes={minutes} seconds={seconds} />
     }
 
     return (
