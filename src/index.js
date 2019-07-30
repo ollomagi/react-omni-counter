@@ -23,15 +23,17 @@ const Counter = ({
   Component,
 }) => {
   if (from === undefined && to === undefined) {
-    return ''
+    return null
   }
   const [state, setState] = useState(initialState)
+  const initTime = moment()
 
   let interval
   let unmount
 
   const count = _ => {
-    const start = from ? moment(from) : moment()
+    const elapsed = moment().diff(initTime)
+    const start = from ? (to ? moment(from).add(elapsed) : moment(from)) : moment()
     const end = to ? moment(to) : moment()
 
     const diff = end.diff(start)

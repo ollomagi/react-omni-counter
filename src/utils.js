@@ -15,7 +15,7 @@ const umd = {
 
 export const formatUnit = (time, formatTime, unit, unitMode) => {
   const uMode = umd[unitMode]
-  const format = time => (formatTime ? formatTime(time) : time)
+  const format = time => (formatTime instanceof Function ? formatTime(time) : time)
   return !uMode
     ? time
     : unitMode === 'short'
